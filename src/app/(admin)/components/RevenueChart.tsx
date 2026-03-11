@@ -21,26 +21,30 @@ import {
 export const description = "A multiple bar chart"
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { month: "January", clothing: 183, shoes: 186, bag: 80 },
+  { month: "February", clothing: 183, shoes: 305, bag: 200 },
+  { month: "March", clothing: 183, shoes: 237, bag: 120 },
+  { month: "April", clothing: 183, shoes: 73, bag: 190 },
+  { month: "May", clothing: 183, shoes: 209, bag: 130 },
+  { month: "June", clothing: 183, shoes: 214, bag: 140 },
 ]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  clothing: {
+    label: "Clothing",
     color: "var(--chart-1)",
   },
-  mobile: {
-    label: "Mobile",
+  shoes: {
+    label: "Shoes",
     color: "var(--chart-2)",
+  },
+  bag: {
+    label: "Bags",
+    color: "var(--chart-3)",
   },
 } satisfies ChartConfig
 
-export function ChartBarMultiple() {
+export function RevenueChart() {
   return (
     <Card>
       <CardHeader>
@@ -60,21 +64,14 @@ export function ChartBarMultiple() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="dashed" />}
+              content={<ChartTooltipContent indicator="dot" />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            <Bar dataKey="clothing" fill="var(--color-clothing)" radius={4} />
+            <Bar dataKey="shoes" fill="var(--color-shoes)" radius={4} />
+            <Bar dataKey="bag" fill="var(--color-bag)" radius={4} />
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 leading-none font-medium">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   )
 }
