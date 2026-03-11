@@ -1,13 +1,13 @@
 "use client";
 
-import {  ShippingFormInputs } from "../lib/types";
+import {  ShippingFormInputs } from "../../lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Trash2 } from "lucide-react";
-import ShippingForm from "../components/ShippingForm";
+import ShippingForm from "../../components/ShippingForm";
 import { useState } from "react";
-import PaymentForm from "../components/PaymentForm";
+import PaymentForm from "../../components/PaymentForm";
 import Image from "next/image";
-import useCartStore from "../stores/cartStore";
+import useCartStore from "../../stores/cartStore";
 
 const steps: { id: number; title: string }[] = [
   {
