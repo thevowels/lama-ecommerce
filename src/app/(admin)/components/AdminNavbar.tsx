@@ -1,5 +1,5 @@
+'use client'
 import { LogOut, Moon, Settings, Sun, User } from "lucide-react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,12 +9,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui//dropdown-menu";
 import { Button } from "@/components/ui/button";
-// import { useTheme } from "next-themes";
+import { useTheme } from "next-themes";
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function AdminNavBar() {
+	const {setTheme} = useTheme();
   return (
     <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10">
       <SidebarTrigger />
@@ -30,7 +31,7 @@ export default function AdminNavBar() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            {/* <DropdownMenuItem onClick={() => setTheme("light")}>
+            <DropdownMenuItem onClick={() => setTheme("light")}>
               Light
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => setTheme("dark")}>
@@ -38,7 +39,7 @@ export default function AdminNavBar() {
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => setTheme("system")}>
               System
-            </DropdownMenuItem> */}
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         {/* USER MENU */}
