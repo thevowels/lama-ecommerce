@@ -14,8 +14,8 @@ export default function ProductCard({ product }: { product: ProductType }) {
   const handleatc = () => {
     addToCart({
       ...product,
-      selectedColor: productTypes.color,
-      selectedSize: productTypes.size,
+      selectedColor: productTypes?.color || "",
+      selectedSize: productTypes?.size || "",
       quantity: 1,
     });
     toast.success("Product added to cart!", { draggable: true });
@@ -42,7 +42,7 @@ export default function ProductCard({ product }: { product: ProductType }) {
       <Link href={`/products/${product.id}`}>
         <div className="relative aspect-2/3 hover:scale-105 duration-300">
           <Image
-            src={product.images[productTypes.color]}
+            src={product.images?.[productTypes?.color || ""] || ""}
             alt={product.name}
             fill
             className="object-cover"

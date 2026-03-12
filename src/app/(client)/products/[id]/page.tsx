@@ -43,7 +43,7 @@ export default async function ProductPage({
       {/* Image */}
       <div className="w-full lg:w-5/12 relative aspect-2/3">
         <Image
-          src={product.images["gray"]}
+          src={product.images?.["gray"] || ""}
           alt={product.name}
           fill
           className="object-contain rounded-md"

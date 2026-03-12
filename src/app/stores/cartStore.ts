@@ -18,21 +18,24 @@ const useCartStore = create<CartStoreStateType & CartStoreActionsType>()(
               item.selectedSize === product.selectedSize &&
               item.selectedColor === product.selectedColor
           );
-          if (existingIndex != -1) {
-            const updatedCart: CartItemType[] = [...state.cart];
-            updatedCart[existingIndex].quantity += product.quantity || 1;
+          if (existingIndex && existingIndex != -1) {
+            const updatedCart = state.cart.map((item, index) =>
+              index === existingIndex
+                ? { ...item, quantity: item.quantity + (product.quantity || 1) }
+                : item
+            );
             return { cart: updatedCart };
           }
           return { cart: [...state.cart, product] };
         }),
       removeFromCart: (product: CartItemType) =>
         set((state) => ({
-				cart: state.cart.filter(item => !(
-					item.id === product.id &&
-					item.selectedColor === product.selectedColor &&
-					item.selectedSize === product.selectedSize
-				))
-		})),
+          cart: state.cart.filter(item => !(
+            item.id === product.id &&
+            item.selectedColor === product.selectedColor &&
+            item.selectedSize === product.selectedSize
+          ))
+        })),
       clearCart: () => set({ cart: [] }),
     }),
     {
